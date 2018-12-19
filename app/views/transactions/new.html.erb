@@ -1,0 +1,16 @@
+<ul>
+  <% @transaction.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+<%= form_for Transaction.new do |f| %>
+  <%= f.label :amount, 'Quantidade' %>
+  <%= f.number_field :amount %>
+  <%= f.label :currency, 'Moeda' %>
+  <%= f.select :currency, [['Dólar', 'dollar'], ['Real', 'real']] %>
+  <%= f.label :quotation, 'Cotação' %>
+  <%= f.number_field :quotation %>
+  <%= f.label :transaction_type, 'Tipo' %>
+  <%= f.select :transaction_type, [['Venda', 'sell'], ['Compra', 'buy']] %>
+  <%= f.submit'Cadastrar' %>
+<% end %>

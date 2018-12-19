@@ -1,4 +1,6 @@
 class Transaction < ApplicationRecord
+  validates :amount, :currency, :quotation, :transaction_type, presence: true
+
   def to_pt_BR(word)
     translations = {
       dollar: 'Dólar', real: 'Real', buy: 'Compra', sell: 'Venda'
