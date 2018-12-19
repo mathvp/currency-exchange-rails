@@ -16,5 +16,5 @@ class Transaction < ApplicationRecord
   def converted_amount
     return amount / quotation if transaction_type == 'buy' && currency == 'real'
     amount
-  end
+  end  
 end

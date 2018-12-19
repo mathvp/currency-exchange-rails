@@ -10,6 +10,7 @@
     <p>Moeda <br><%= transaction.to_pt_BR(transaction.currency) %></p>
     <p>Tipo <br><%= transaction.to_pt_BR(transaction.transaction_type) %></p>
     <p>Total <br><%= number_to_currency(transaction.total, format: '%u %n', negative_format: '%u -%n') %></p>
+    <p><%= link_to edit_transaction_path(transaction) %></p>
     <br>
   <% end %>
 <% end %>

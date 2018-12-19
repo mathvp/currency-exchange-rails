@@ -3,7 +3,7 @@
     <li><%= message %></li>
   <% end %>
 </ul>
-<%= form_for Transaction.new do |f| %>
+<%= form_for @transaction do |f| %>
   <%= f.label :amount, 'Quantidade' %>
   <%= f.number_field :amount %>
   <%= f.label :currency, 'Moeda' %>
@@ -12,5 +12,5 @@
   <%= f.number_field :quotation %>
   <%= f.label :transaction_type, 'Tipo' %>
   <%= f.select :transaction_type, [['Venda', 'sell'], ['Compra', 'buy']] %>
-  <%= f.submit 'Cadastrar' %>
+  <%= f.submit 'Editar' %>
 <% end %>
