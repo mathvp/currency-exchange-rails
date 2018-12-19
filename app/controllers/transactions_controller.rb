@@ -10,4 +10,8 @@ class TransactionsController < ApplicationController
   def new
     @transaction = Transaction.new
   end
+
+  def show
+    @transaction = Transaction.find(params[:id])
+  end
 end
