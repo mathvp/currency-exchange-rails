@@ -32,6 +32,16 @@ class TransactionsController < ApplicationController
     end
   end
 
+  def destroy
+    transaction = Transaction.find(params[:id])
+    if transaction.destroy
+      redirect_to root_path, flash: { success: 'Transação apagada com sucesso!' }
+    else
+      transaction.errors.add(:base, 'Erro ao excluir transação')
+      redirect_to root_path
+    end
+  end
+
   private
 
   def transaction_params

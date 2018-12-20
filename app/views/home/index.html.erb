@@ -1,5 +1,8 @@
 <h1>Bem-vindo ao sistema de trocas de moedas</h1>
 
+<% if flash[:success] %>
+    <div><%= flash[:success] %></div>
+<% end %>
 
 <% if @transactions.none? #'inverse' of .any? %>
   <p>Você ainda não possui transações cadastradas</p>
@@ -10,7 +13,7 @@
     <p>Moeda <br><%= transaction.to_pt_BR(transaction.currency) %></p>
     <p>Tipo <br><%= transaction.to_pt_BR(transaction.transaction_type) %></p>
     <p>Total <br><%= number_to_currency(transaction.total, format: '%u %n', negative_format: '%u -%n') %></p>
-    <p><%= link_to edit_transaction_path(transaction) %></p>
+    <p><%= link_to 'Editar', edit_transaction_path(transaction) %></p>
     <br>
   <% end %>
 <% end %>

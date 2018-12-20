@@ -15,5 +15,6 @@
 <p><%= number_to_currency(transaction.total, format: '%u %n', negative_format: '%u -%n')%></p>
 
 <p><%= link_to 'Editar', edit_transaction_path(transaction) %></p>
+<p><%= link_to 'Apagar', transaction_path(transaction), method: :delete %></p>
 
 <%= link_to('Voltar', :back) %>
