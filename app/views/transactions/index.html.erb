@@ -1,0 +1,28 @@
+<h1>Lista de transações</h1>
+
+<% if flash[:success] %>
+    <div><%= flash[:success] %></div>
+<% end %>
+
+<% if @transactions.none? #'inverse' of .any? %>
+  <p>Você ainda não possui transações cadastradas</p>
+<% else %>
+  <% @transactions.each do |transaction| %>
+    <h3>Identificador</h3>
+    <p><%= link_to(transaction.id, controller: 'transactions', action: 'show', id: transaction.id) %></p>
+    <h3>Usuário</h3>
+    <p><%= transaction.user %></p>
+    <h3>Quantidade</h3>
+    <p><%= transaction.amount %></p>
+    <h3>Moeda</h3>
+    <p><%= transaction.to_pt_BR(transaction.currency) %></p>
+    <h3>Tipo</h3>
+    <p><%= transaction.to_pt_BR(transaction.transaction_type) %></p>
+    <h3>Total</h3>
+    <p><%= number_to_currency(transaction.total, format: '%u %n', negative_format: '%u -%n') %></p>
+    <p><%= link_to 'Editar', edit_transaction_path(transaction) %></p>
+    <br>
+  <% end %>
+<% end %>
+
+<%= link_to('Registrar transação', controller: 'transactions', action:'new') %>

@@ -1,16 +1,22 @@
 class TransactionsController < ApplicationController
+  def index
+    @transactions = Transaction.all
+  end
+
   def create
     @transaction = Transaction.new(transaction_params)
     if @transaction.save
       redirect_to @transaction
     else
       empty_error
+      @users = User.all
       render :new
     end
   end
 
   def new
     @transaction = Transaction.new
+    @users = User.all
   end
 
   def show
@@ -46,7 +52,7 @@ class TransactionsController < ApplicationController
 
   def transaction_params
     params.require(:transaction).permit(
-      :amount, :currency, :quotation, :transaction_type
+      :amount, :currency, :quotation, :transaction_type, :user_id
     )
   end
 

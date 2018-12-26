@@ -12,5 +12,7 @@
   <%= f.number_field :quotation %>
   <%= f.label :transaction_type, 'Tipo' %>
   <%= f.select :transaction_type, [['Venda', 'sell'], ['Compra', 'buy']] %>
+  <%= f.label :user_id, 'Usuário' %>
+  <%= f.collection_select(:user_id, @users, :id, :email) %>
   <%= f.submit 'Cadastrar' %>
 <% end %>
