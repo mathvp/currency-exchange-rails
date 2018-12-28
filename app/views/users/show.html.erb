@@ -3,3 +3,4 @@
 <p><%= @user.email %></p>
 <p>CPF</p>
 <p><%= @user.cpf %></p>
+<%= link_to('Editar', controller: 'users', action: 'edit', id: @user.id) %>
