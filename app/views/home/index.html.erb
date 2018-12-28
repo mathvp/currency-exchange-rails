@@ -3,9 +3,15 @@
 <% if flash[:success] %>
     <div><%= flash[:success] %></div>
 <% end %>
-
+<%= form_tag(root_path) do %>
+  <%= label_tag 'currency', 'Filtro por moeda' %>
+  <%= select_tag 'currency', raw("<option value='dollar'>Dólar</option>\
+                                         <option value='real'>Real</option>")%>
+  <%= submit_tag 'Filtrar' %>
+<% end %>
+A: <%= @presenca %>
 <% if @transactions.none? #'inverse' of .any? %>
-  <p>Você ainda não possui transações cadastradas</p>
+  <p>Você ainda não possui transações cadastradas.</p>
 <% else %>
   <% @transactions.each do |transaction| %>
     <p>Identificador <br><%= link_to(transaction.id, controller: 'transactions', action: 'show', id: transaction.id) %></p>

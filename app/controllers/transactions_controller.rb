@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-  def index
+  def index    
     @transactions = Transaction.all
   end
 
@@ -46,6 +46,10 @@ class TransactionsController < ApplicationController
       transaction.errors.add(:base, 'Erro ao excluir transação')
       redirect_to root_path
     end
+  end
+
+  def filter_by_currency
+    @transactions = Transaction.find(params[:currency])
   end
 
   private
