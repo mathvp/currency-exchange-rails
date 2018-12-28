@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_26_034751) do
+ActiveRecord::Schema.define(version: 2018_12_28_175007) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.text "street"
+    t.text "city"
+    t.text "state"
+    t.text "neighbourhood"
+    t.text "postal_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
 
   create_table "transactions", force: :cascade do |t|
     t.integer "amount"
@@ -29,6 +41,8 @@ ActiveRecord::Schema.define(version: 2018_12_26_034751) do
     t.text "cpf"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "address_id"
+    t.index ["address_id"], name: "index_users_on_address_id"
   end
 
 end

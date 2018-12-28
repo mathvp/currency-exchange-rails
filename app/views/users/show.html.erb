@@ -3,4 +3,13 @@
 <p><%= @user.email %></p>
 <p>CPF</p>
 <p><%= @user.cpf %></p>
+<p>Endereço</p>
+<% if @user.address.present? %>
+  <p>Rua: <%= @user.address.street %></p>
+  <p>Cidade/UF: <%= "#{@user.address.city} - #{@user.address.state}" %></p>
+  <p>Bairro: <%= @user.address.neighbourhood %></p>  
+  <p>CEP: <%= @user.address.postal_code %></p>
+<% else %>
+  <p>Este usuário não tem um endereço cadastrado</p>
+<% end %>
 <%= link_to('Editar', controller: 'users', action: 'edit', id: @user.id) %>
