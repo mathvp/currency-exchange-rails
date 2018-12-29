@@ -3,13 +3,12 @@
 <% if flash[:success] %>
     <div><%= flash[:success] %></div>
 <% end %>
-<%= form_tag(root_path) do %>
+<%= form_tag("#{root_path}filter_currency") do %>
   <%= label_tag 'currency', 'Filtro por moeda' %>
   <%= select_tag 'currency', raw("<option value='dollar'>Dólar</option>\
                                          <option value='real'>Real</option>")%>
   <%= submit_tag 'Filtrar' %>
 <% end %>
-A: <%= @presenca %>
 <% if @transactions.none? #'inverse' of .any? %>
   <p>Você ainda não possui transações cadastradas.</p>
 <% else %>
@@ -21,9 +20,9 @@ A: <%= @presenca %>
     <p>Total <br><%= number_to_currency(transaction.total, format: '%u %n', negative_format: '%u -%n') %></p>
     <p><%= link_to 'Editar', edit_transaction_path(transaction) %></p>
     <br>
-  <% end %>
+  <% end %>  
 <% end %>
-
-<%= link_to('Registrar transação', controller: 'transactions', action:'new') %>
-<%= link_to('Cadastrar usuário', controller: 'users', action: 'new') %>
-<%= link_to('Usuários', controller: 'users', action: 'index') %>
+<%= link_to 'Ver todas', "#{root_path}all" %>
+<%= link_to 'Registrar transação', controller: 'transactions', action:'new' %>
+<%= link_to 'Cadastrar usuário', controller: 'users', action: 'new' %>
+<%= link_to 'Usuários', controller: 'users', action: 'index' %>

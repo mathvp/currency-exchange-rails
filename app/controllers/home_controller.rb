@@ -1,9 +1,15 @@
 class HomeController < ApplicationController
   def index
-    if params[:currency].present?
-      @transactions = Transaction.where("currency = '%s'", params[:currency])
-    else
-      @transactions = Transaction.all
-    end
+    @transactions = Transaction.where("Date(created_at) = Date(?)", Time.now)
+  end
+
+  def filter_currency
+    @transactions = Transaction.where("currency = '%s'", params[:currency])
+    render :index
+  end
+
+  def all
+    @transactions = Transaction.all
+    render :index
   end
 end
