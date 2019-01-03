@@ -1,6 +1,7 @@
 class Transaction < ApplicationRecord
   belongs_to :user
   validates  :amount, :currency, :quotation, :transaction_type, presence: true
+  after_save :update_total
 
   def to_pt_BR(word)
     translations = {
@@ -18,4 +19,8 @@ class Transaction < ApplicationRecord
     return amount / quotation if transaction_type == 'buy' && currency == 'real'
     amount
   end  
+
+  def update_total
+    self.update_column(:total, self.total)
+  end
 end

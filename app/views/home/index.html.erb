@@ -6,7 +6,7 @@
 <%= form_tag("#{root_path}filter_currency") do %>
   <%= label_tag 'currency', 'Filtro por moeda' %>
   <%= select_tag 'currency', raw("<option value='dollar'>Dólar</option>\
-                                         <option value='real'>Real</option>")%>
+                                  <option value='real'>Real</option>")%>
   <%= submit_tag 'Filtrar' %>
 <% end %>
 <% if @transactions.none? #'inverse' of .any? %>
@@ -20,7 +20,8 @@
     <p>Total <br><%= number_to_currency(transaction.total, format: '%u %n', negative_format: '%u -%n') %></p>
     <p><%= link_to 'Editar', edit_transaction_path(transaction) %></p>
     <br>
-  <% end %>  
+  <% end %>
+  <p>Total agregado <br><%= number_to_currency(@transactions.sum(:total), format: '%u %n', negative_format: '%u -%n') %></p>
 <% end %>
 <%= link_to 'Ver todas', "#{root_path}all" %>
 <%= link_to 'Registrar transação', controller: 'transactions', action:'new' %>

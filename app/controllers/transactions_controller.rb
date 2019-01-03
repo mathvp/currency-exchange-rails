@@ -3,7 +3,7 @@ class TransactionsController < ApplicationController
     @transactions = Transaction.all
   end
 
-  def create
+  def create    
     @transaction = Transaction.new(transaction_params)
     if @transaction.save
       redirect_to @transaction
@@ -14,7 +14,7 @@ class TransactionsController < ApplicationController
     end
   end
 
-  def new
+  def new    
     @transaction = Transaction.new
     @users = User.all
   end
@@ -53,7 +53,7 @@ class TransactionsController < ApplicationController
   end
 
   private
-
+  
   def transaction_params
     params.require(:transaction).permit(
       :amount, :currency, :quotation, :transaction_type, :user_id
