@@ -1,21 +1,51 @@
-<ul>
-  <% @user.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-</ul>
+<!DOCTYPE html>
+<html class="ls-theme-green">
+  <head>
+    <title>Editar usuário</title>
+    <%= render 'shared/head'%>
+  </head>
+  <body>
+    <%= render 'shared/header' %>
 
-<%= form_for @user do |f| %>
-  <%= f.label :name, 'Nome' %>
-  <%= f.text_field :name %>
-  <%= f.label :email, 'E-mail' %>
-  <%= f.text_field :email %>
-  <%= f.label :cpf, 'CPF' %>
-  <%= f.text_field :cpf %>
-  <%= f.label :address, 'Endereço' %>
-  <% if @user.address.present? %>
-    <%= @user.address %>
-  <% else %>
-    <p>Este usuário não tem um endereço cadastrado</p>
-  <% end %>
-  <%= f.submit 'Editar' %>
-<% end %>
+    <aside class="ls-sidebar">
+      <%= render 'shared/sidebar_menu'%>
+    </aside>
+
+    <main class="ls-main ">
+      <div class="container-fluid">
+        <h2 class="ls-title-intro ls-title-2">Editar Usuário</h2>
+        <% @user.errors.full_messages.each do |message| %>
+          <div class="ls-alert-danger"><%= message %></div>
+        <% end %>
+
+        <%= form_for @user do |f| %>
+          <fieldset>
+            <label class="ls-label col-md-3">
+              <b class="ls-label-text">Nome</b>
+              <%= f.text_field :name %>
+            </label>
+            <label class="ls-label col-md-3">
+              <b class="ls-label-text">E-mail</b>
+              <%= f.text_field :email %>
+            </label>
+            <label class="ls-label col-md-3">
+              <b class="ls-label-text">CPF</b>
+              <%= f.text_field :cpf %>
+            </label>
+            <label class="ls-label col-md-5">
+              <b class="ls-label-text">Endereço</b>
+              <% if @user.address.present? %>
+                <%= @user.address %>
+              <% else %>
+                <div class="ls-alert-info">Este usuário não tem um endereço cadastrado</div>
+              <% end %>
+            </label>
+            <label class="ls-label col-md-3">
+              <%= f.submit 'Editar', class: 'ls-btn-primary' %>
+            </label>
+          </fieldset>
+        <% end %>
+      </div>
+    </main>
+  </body>
+</html>

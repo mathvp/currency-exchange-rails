@@ -1,0 +1,17 @@
+<div class="ls-sidebar-inner">
+  <%= link_to 'Voltar', :back, class: 'ls-go-prev' %>
+  <nav class="ls-menu">
+    <ul>
+      <li><%= link_to 'Início', root_path, class: 'ls-ico-home' %></li>
+      <li><%= link_to 'Usuários', {controller: 'users', action: 'index'}, class: 'ls-ico-users' %></li>
+      <li><%= link_to 'Cadastrar usuário', {controller: 'users', action: 'new'}, class: 'ls-ico-user-add' %></li>
+      <li>
+        <a href="#" class="ls-ico-list" title="Transações">Transações</a>
+        <ul>
+          <li><%= link_to 'Ver todas', "#{transactions_path}", class: 'ls-ico-list' %></li>
+          <li><%= link_to 'Registrar transação', {controller: 'transactions', action:'new'}, class: 'ls-ico-list'  %></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>

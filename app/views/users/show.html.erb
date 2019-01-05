@@ -1,15 +1,45 @@
-<h3><%= @user.name %></h3>
-<p>E-mail</p>
-<p><%= @user.email %></p>
-<p>CPF</p>
-<p><%= @user.cpf %></p>
-<p>Endereço</p>
-<% if @user.address.present? %>
-  <p>Rua: <%= @user.address.street %></p>
-  <p>Cidade/UF: <%= "#{@user.address.city} - #{@user.address.state}" %></p>
-  <p>Bairro: <%= @user.address.neighbourhood %></p>  
-  <p>CEP: <%= @user.address.postal_code %></p>
-<% else %>
-  <p>Este usuário não tem um endereço cadastrado</p>
-<% end %>
-<%= link_to('Editar', controller: 'users', action: 'edit', id: @user.id) %>
+<!DOCTYPE html>
+<html class="ls-theme-green">
+  <head>
+    <title>Usuário - <%= @user.name %></title>
+    <%= render 'shared/head'%>
+  </head>
+  <body>
+    <%= render 'shared/header' %>
+
+    <aside class="ls-sidebar">
+      <%= render 'shared/sidebar_menu'%>
+    </aside>
+
+    <main class="ls-main ">
+      <div class="container-fluid">
+        <h2 class="ls-title-intro ls-title-2">Informações do usuário</h2>
+        <div class="ls-box">
+          <h3 class="ls-title-3"><%= @user.name %></h3>
+          <label class="ls-label col-md-4">
+            <b class="ls-label-text">E-mail</b>
+            <%= @user.email %>
+          </label>
+          <label class="ls-label col-md-3">
+            <b class="ls-label-text">CPF</b>
+            <%= @user.cpf %>
+          </label>
+          <label class="ls-label col-md-5">
+            <b class="ls-label-text">Endereço</b>
+            <% if @user.address.present? %>
+              <p>Rua: <%= @user.address.street %></p>
+              <p>Cidade/UF: <%= "#{@user.address.city} - #{@user.address.state}" %></p>
+              <p>Bairro: <%= @user.address.neighbourhood %></p>  
+              <p>CEP: <%= @user.address.postal_code %></p>
+            <% else %>
+              <div class="ls-alert-info">Este usuário não tem um endereço cadastrado</div>
+            <% end %>
+          </label>
+          <label class="ls-label col-md-5">
+            <%= link_to 'Editar', {controller: 'users', action: 'edit', id: @user.id}, class: 'ls-btn-primary' %>
+          </label>
+        </div> 
+      </div>
+    </main>
+  </body>
+</html>

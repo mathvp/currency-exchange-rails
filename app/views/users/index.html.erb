@@ -1,10 +1,42 @@
-<h3>Lista de usuários</h3>
-<% if @users.none? %>
-  <p>Nenhum usuário cadastrado</p>
-<% else %>
-  <% @users.each do |user| %>
-    <div>
-      <%= link_to(user.id, controller: 'users', action: 'show', id: user.id) %>
-    </div>
-  <% end %>
-<% end %>
+<!DOCTYPE html>
+<html class="ls-theme-green">
+  <head>
+    <title>Casa de Câmbio - Rails</title>
+    <%= render 'shared/head'%>
+  </head>
+  <body>
+    
+    <%= render 'shared/header' %>
+
+    <aside class="ls-sidebar">
+      <%= render 'shared/sidebar_menu'%>
+    </aside>
+
+    <main class="ls-main ">
+      <div class="container-fluid">
+        <h1 class="ls-title-intro ls-ico-home">Lista de usuários</h1>
+        <% if @users.none? %>
+          <div class="ls-alert-info">Nenhum usuário cadastrado</div>
+        <% else %>
+          <% @users.each do |user| %>
+            <div class="ls-list">
+              <header class="ls-list-header">
+                <div class="ls-list-title col-md-9">
+                  Usuário: <%= link_to user.name, controller: 'users', action: 'show', id: user.id %> - 
+                  <%= link_to user.id, controller: 'users', action: 'show', id: user.id %>
+                  <small><%= user.email %></small>
+                </div>
+                <div class="col-md-3 ls-txt-right">
+                  <%= link_to 'Detalhes', user, class: 'ls-btn' %>
+                </div>
+              </header>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </main>
+  </body>
+</html>
+
+
+
