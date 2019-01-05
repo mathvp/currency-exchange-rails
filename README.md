@@ -1,24 +1,22 @@
-# README
+# CurrencyExchange - Ruby on Rails learning proposal website
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple Transaction Register System made to learn some Ruby on Rails principles
 
-Things you may want to cover:
+* Ruby version: 2.5.1
 
-* Ruby version
+* Rails version: 5.2.2
 
-* System dependencies
+* Development and Test Database: SQLite3 
 
-* Configuration
+* Production Database: Postgres
 
-* Database creation
+* Template used: [Locastyle 3.0](https://github.com/locaweb/locawebstyle)
 
-* Database initialization
+* To run the tests use rspec command
 
-* How to run the test suite
+---
 
-* Services (job queues, cache servers, search engines, etc.)
+![Tela Inicial](public/preview-1.png)
 
-* Deployment instructions
-
-* ...
+---
+Thank you!
