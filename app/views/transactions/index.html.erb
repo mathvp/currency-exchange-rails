@@ -31,7 +31,7 @@
               </div>
             </label>
             <div class="ls-actions-btn">
-              <%= submit_tag 'Filtrar', class: 'ls-btn' %>
+              <%= submit_tag 'Filtrar', class: 'ls-btn-primary' %>
             </div>
           <% end %>
         </div>
@@ -58,12 +58,23 @@
                   <td><%= transaction.to_pt_BR(transaction.currency) %></td>
                   <td><%= transaction.to_pt_BR(transaction.transaction_type) %></td>
                   <td><%= number_to_currency(transaction.total, format: '%u %n', negative_format: '%u -%n') %></td>
-                  <td><%= link_to 'Editar', edit_transaction_path(transaction) %></td>
+                  <td><%= link_to 'Editar', edit_transaction_path(transaction), class: 'ls-btn' %></td>
                 </tr>
               <% end %>
             </tbody>
           </table>
-          <p>Total agregado <br><%= number_to_currency(@transactions.sum(:total), format: '%u %n', negative_format: '%u -%n') %></p>
+          <div class="ls-box ls-board-box">
+            <div class="col-sm-6 col-md-3">
+              <div class="ls-box">
+                <div class="ls-box-head">
+                  <h6 class="ls-title-4">Total agregado</h6>
+                </div>
+                <div class="ls-box-body">
+                  <strong><%= number_to_currency(@transactions.sum(:total), format: '%u %n', negative_format: '%u -%n') %></strong>
+                </div>
+              </div>
+            </div>
+          </div>
         <% end %>
       </div>
     </main>
